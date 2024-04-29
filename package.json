@@ -1,7 +1,7 @@
 {
   "name": "nasa-potd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Using Nasa APOD we collect the potd and set it to as th desktop background",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^30.0.1"
+    "electron": "^30.0.1",
+    "electron-builder": "^24.13.3"
   },
   "dependencies": {
-    "sharp": "^0.33.3",
     "wallpaper": "^7.2.1"
+  },
+  "build": {
+    "asar": true,
+    "appId": "com.lewiem.nasa-potd",
+    "productName": "nasa-potd",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ]
   }
 }

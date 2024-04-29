@@ -48,8 +48,13 @@ ipcMain.on('save-settings', (event, settings) => {
     startWallpaperUpdate(settings.frequency, settings.time, settings.scale);
 
     // Save settings to a file
-    const settingsFilePath = path.join(__dirname, 'settings.json');
-    fs.writeFileSync(settingsFilePath, JSON.stringify(settings));
+    const settingsFilePath = path.join(app.getPath('userData'), 'settings.json');
+    try {
+        fs.writeFileSync(settingsFilePath, JSON.stringify(settings));
+        console.log('Settings saved successfully.');
+    } catch (error) {
+        console.error('Error saving settings:', error);
+    }
 
     // Update wallpaper immediately when settings are saved
     setWallpaperFromURL(settings);
@@ -62,12 +67,16 @@ ipcMain.on('save-settings', (event, settings) => {
 
 // Load saved settings when the app starts
 app.on('ready', () => {
-    const settingsFilePath = path.join(__dirname, 'settings.json');
-    if (fs.existsSync(settingsFilePath)) {
-        const savedSettings = JSON.parse(fs.readFileSync(settingsFilePath));
-        startWallpaperUpdate(savedSettings.frequency, savedSettings.time, savedSettings.scale);
-        setWallpaperFromURL(savedSettings);
-        console.log(savedSettings)
+    const settingsFilePath = path.join(app.getPath('userData'), 'settings.json');
+    try {
+        if (fs.existsSync(settingsFilePath)) {
+            const savedSettings = JSON.parse(fs.readFileSync(settingsFilePath));
+            startWallpaperUpdate(savedSettings.frequency, savedSettings.time, savedSettings.scale);
+            setWallpaperFromURL(savedSettings);
+            console.log('Loaded saved settings:', savedSettings);
+        }
+    } catch (error) {
+        console.error('Error loading settings:', error);
     }
 });
 

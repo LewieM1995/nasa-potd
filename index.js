@@ -43,14 +43,11 @@ app.on('activate', () => {
 
 // Listen for save-settings event from renderer process
 ipcMain.on('save-settings', (event, settings) => {
-    // Here you can handle the settings received from the renderer process
     console.log('Received settings:', settings);
     // Start the wallpaper update interval based on the user's settings
     startWallpaperUpdate(settings.frequency, settings.time, settings.scale);
 
     // Save settings to a file
-    // Here, you should implement code to save settings to a file
-    // For simplicity, let's assume settings are saved to a JSON file
     const settingsFilePath = path.join(__dirname, 'settings.json');
     fs.writeFileSync(settingsFilePath, JSON.stringify(settings));
 

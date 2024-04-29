@@ -17,7 +17,7 @@ async function setWallpaperFromURL(settings) {
         const data = await response.json();
         const imageUrl = data.hdurl;
 
-        console.log('Image URL:', imageUrl); // Debugging statement
+        console.log('Image URL:', imageUrl);
 
         // Check if imageUrl is empty or undefined
         if (!imageUrl) {

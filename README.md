@@ -38,6 +38,3 @@ npx electron .
 - [wallpaper](https://www.npmjs.com/package/wallpaper)
 - [fs-extra](https://www.npmjs.com/package/fs-extra)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

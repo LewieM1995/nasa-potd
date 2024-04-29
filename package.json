@@ -1,0 +1,19 @@
+{
+  "name": "nasa-potd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.0.1"
+  },
+  "dependencies": {
+    "sharp": "^0.33.3",
+    "wallpaper": "^7.2.1"
+  }
+}

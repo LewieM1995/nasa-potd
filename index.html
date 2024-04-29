@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nasa-potd.exe</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h2>Configure Wallpaper Update</h2>
+
+        <label for="frequency">Update Frequency:</label>
+        <select id="frequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+        </select>
+
+        <label for="time">Time of Day:</label>
+        <input type="time" id="time" name="time">
+
+        <label for="scale">Scale</label>
+        <select id="scale">
+            <option value="fill">Fill</option>
+            <option value="fit">Fit</option>
+            <option value="stretch">Stretch</option>
+            <option value="tile">Tile</option>
+            <option value="center">Center</option>
+            <option value="span">Span</option>
+        </select>
+
+        <button onclick="saveSettings()">Save Settings & Run</button>
+    </div>
+
+    <script>
+        function saveSettings() {
+            // Get selected frequency and time
+            const frequency = document.getElementById('frequency').value;
+            const time = document.getElementById('time').value;
+            const scale = document.getElementById('scale').value;
+
+            // Example: Send settings to main process
+            window.api.send('save-settings', { frequency, time, scale });
+        }
+    </script>
+</body>
+</html>
+

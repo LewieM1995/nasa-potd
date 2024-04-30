@@ -59,10 +59,10 @@ ipcMain.on('save-settings', (event, settings) => {
     // Update wallpaper immediately when settings are saved
     setWallpaperFromURL(settings);
 
-    /*//Close mainWindow
+    //Close mainWindow
     if (mainWindow){
         mainWindow.close();
-    }*/
+    }
 });
 
 // Load saved settings when the app starts
